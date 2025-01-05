@@ -1,19 +1,10 @@
-import os
 from datetime import date
 
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.template.defaultfilters import slugify
 
-
-def create_custom_path(instance, filename):
-    _, ext = os.path.splitext(filename)
-    ext = ext.lower().strip(".")
-    
-    if isinstance(instance, User):
-        return f"{slugify(instance.email)}/profile.{ext}"
-
+from utils import create_custom_path
 
 
 class UserManager(BaseUserManager):
