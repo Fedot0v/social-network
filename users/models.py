@@ -81,6 +81,12 @@ class Profile(models.Model):
     birth_date = models.DateField(_("birth_date"), blank=True, null=True)
     status = models.CharField(_("status"), max_length=50, blank=True)
     location = models.CharField(_("location"), max_length=50, blank=True)
+    username_display = models.CharField(
+        _("username"),
+        max_length=150,
+        blank=True,
+        null=True
+    )
 
     def clean_birth_date(self):
         if self.birth_date and self.birth_date > date.today():
